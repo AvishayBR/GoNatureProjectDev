@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="homePageStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="homePagePane" prefHeight="768.0" prefWidth="950.0">
+         <children>
+            <ImageView fx:id="pngBackGround" fitHeight="768.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true" />
+            <MFXButton fx:id="btnOrderNowHome" buttonType="RAISED" depthLevel="LEVEL1" layoutX="400.0" layoutY="372.0" onAction="#onClickOrderNowHomeButton" prefHeight="70.0" prefWidth="150.0" rippleColor="#adff49" text="Order now!" />
+            <Label fx:id="lblHeaderHome" layoutX="400.0" layoutY="50.0" text="goNature">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
