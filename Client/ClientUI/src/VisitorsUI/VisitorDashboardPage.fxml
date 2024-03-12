@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -7,62 +8,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.image.Image?>
 <StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.VisitorDashboardPageController">
    <children>
       <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Separator fx:id="sep" layoutX="6.0" layoutY="59.0" prefHeight="12.0" prefWidth="940.0" />
-            <Text fx:id="header" layoutX="407.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Dashboard" textAlignment="CENTER">
+            <Separator layoutY="68.0" prefHeight="12.0" prefWidth="950.0" />
+            <Text fx:id="header" layoutX="336.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="1.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text2" layoutX="43.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
+            <Text layoutX="1.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text1" layoutX="43.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text11" layoutX="41.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text12" layoutX="39.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text1211" layoutX="38.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-<!--            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="210.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                <image>-->
-<!--                   <Image url="/assets/orderReservationIcon.png" />-->
-<!--                </image>-->
-<!--            </ImageView>-->
-<!--            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="529.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                <image>-->
-<!--                    <Image url="/assets/viewAllOrders.png" />-->
-<!--                </image>-->
-<!--            </ImageView>-->
-            <Text fx:id="text121" layoutX="210.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order a visit" wrappingWidth="131.57323455810547">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <Text fx:id="text1212" layoutX="529.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View orders" wrappingWidth="131.57323455810547">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
+            <MFXButton fx:id="btnOrderVisit" buttonType="RAISED" layoutX="150.0" layoutY="500.0" onAction="#OnClickOrderVisitButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Order a visit" />
+            <MFXButton fx:id="btnViewOrders" buttonType="RAISED" layoutX="600.0" layoutY="500.0" onAction="#OnClickViewOrdersButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="View orders" />
+            <ImageView fx:id="pngOrderVisit" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="pngViewOrders" fitHeight="150.0" fitWidth="200.0" layoutX="550.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

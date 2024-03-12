@@ -4,128 +4,120 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text fx:id="txtHeader" layoutX="615.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign-Up to Waitlist" textAlignment="CENTER">
+            <Text fx:id="txtHeader" layoutX="336.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign-Up to Waitlist" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <ImageView fx:id="imgExit" fitHeight="50.0" fitWidth="50.0" layoutX="1220.0" layoutY="15.0" onMouseClicked="#ExitClient" pickOnBounds="true" preserveRatio="true" />
-            <Separator layoutX="250.0" layoutY="63.0" prefHeight="14.0" prefWidth="1030.0" />
-            <Text layoutX="493.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:">
+            <Separator layoutY="63.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="245.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Label fx:id="lblErrorName" layoutX="904.0" layoutY="436.0" text="errorMsgName" textFill="RED">
+            <Label fx:id="lblErrorName" layoutX="656.0" layoutY="442.0" text="errorMsgName" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text fx:id="txtDescription" layoutX="251.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Secure your spot on the waitlist by verifying your order and entering your contact details.&#10;Provide your contact details to ensure we can reach you when a spot becomes available.&#10;Don't miss out on the opportunity – sign up now!">
+            <Text fx:id="txtDescription" layoutX="1.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Secure your spot on the waitlist by verifying your order and entering your contact details.&#10;Provide your contact details to ensure we can reach you when a spot becomes available.&#10;Don't miss out on the opportunity – sign up now!">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <VBox fx:id="vboxMenu" prefHeight="768.0" prefWidth="250.0" />
-            <Text layoutX="493.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
+            <Text layoutX="245.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="495.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+            <Text layoutX="247.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Label fx:id="lblErrorPhone" layoutX="902.0" layoutY="502.0" text="errorMsgPhone" textFill="RED">
+            <Label fx:id="lblErrorPhone" layoutX="654.0" layoutY="508.0" text="errorMsgPhone" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lblErrorEmail" layoutX="905.0" layoutY="564.0" text="errorMsgEmail" textFill="RED">
+            <Label fx:id="lblErrorEmail" layoutX="657.0" layoutY="570.0" text="errorMsgEmail" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text layoutX="494.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Name:">
+            <Text layoutX="246.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Name:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="494.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Visitors:">
+            <Text layoutX="246.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Visitors:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="495.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone:">
+            <Text layoutX="247.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="495.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+            <Text layoutX="247.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="494.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+            <Text layoutX="246.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="493.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+            <Text layoutX="245.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Label fx:id="lblParkName" layoutX="680.0" layoutY="189.0" text="lblParkName">
+            <Label fx:id="lblParkName" layoutX="432.0" layoutY="195.0" text="lblParkName">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblNumOfVisitors" layoutX="680.0" layoutY="229.0" text="lblNumOfVisitors">
+            <Label fx:id="lblNumOfVisitors" layoutX="432.0" layoutY="235.0" text="lblNumOfVisitors">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblTelephone" layoutX="680.0" layoutY="269.0" text="lblTelephone">
+            <Label fx:id="lblTelephone" layoutX="432.0" layoutY="275.0" text="lblTelephone">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblEmail" layoutX="680.0" layoutY="309.0" text="lblEmail">
+            <Label fx:id="lblEmail" layoutX="432.0" layoutY="315.0" text="lblEmail">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="680.0" layoutY="349.0" text="lblDate">
+            <Label fx:id="lblDate" layoutX="432.0" layoutY="355.0" text="lblDate">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblTime" layoutX="680.0" layoutY="389.0" text="lblTime">
+            <Label fx:id="lblTime" layoutX="432.0" layoutY="395.0" text="lblTime">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="txtFullName" layoutX="677.0" layoutY="421.0" prefWidth="200.0" />
-            <MFXTextField fx:id="txtPhone" layoutX="677.0" layoutY="486.0" prefWidth="200.0" />
-            <MFXTextField fx:id="txtEmail" layoutX="677.0" layoutY="549.0" prefWidth="200.0" />
-            <MFXButton fx:id="btnSignUp" buttonType="RAISED" layoutX="627.0" layoutY="645.0" onAction="#OnClickSignUpButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Sign-Up Now!">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </MFXButton>
+            <MFXTextField fx:id="txtFullName" layoutX="429.0" layoutY="427.0" prefWidth="200.0" />
+            <MFXTextField fx:id="txtPhone" layoutX="429.0" layoutY="492.0" prefWidth="200.0" />
+            <MFXTextField fx:id="txtEmail" layoutX="429.0" layoutY="555.0" prefWidth="200.0" />
+            <MFXButton fx:id="btnSignUp" buttonType="RAISED" layoutX="425.0" layoutY="651.0" onAction="#OnClickSignUpButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Sign-Up Now!" />
          </children>
       </Pane>
    </children>

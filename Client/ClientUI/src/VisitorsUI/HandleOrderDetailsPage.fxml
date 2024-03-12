@@ -4,43 +4,39 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text fx:id="txtHeader" layoutX="664.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handle Order" textAlignment="CENTER">
+            <Text fx:id="txtHeader" layoutX="336.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handle Order" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <ImageView fx:id="imgExit" fitHeight="50.0" fitWidth="50.0" layoutX="1220.0" layoutY="15.0" onMouseClicked="#ExitClient" pickOnBounds="true" preserveRatio="true" />
-            <Separator layoutX="250.0" layoutY="63.0" prefHeight="14.0" prefWidth="1030.0" />
-            <Text layoutX="426.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="299.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Label fx:id="lblErrorMsg" layoutX="597.0" layoutY="150.0" text="Error:" textFill="RED">
+            <Label fx:id="lblErrorEmailMsg" layoutX="615.0" layoutY="207.0" text="ErrorEmailMsg" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text fx:id="txtDescription" layoutX="251.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can approve or cancel your order with ease.&#10;Additionally, update your email for seamless communication.">
+            <Text fx:id="txtDescription" layoutX="1.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can approve or cancel your order with ease.&#10;Additionally, update your email for seamless communication.">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <VBox fx:id="vboxMenu" prefHeight="768.0" prefWidth="250.0" />
-            <MFXTextField fx:id="txtEmail" layoutX="498.0" layoutY="182.0" prefHeight="50.0" prefWidth="230.0" />
-            <MFXButton fx:id="btnCancelOrder" layoutX="265.0" layoutY="294.0" onAction="#OnClickCancelOrderButton" prefHeight="48.0" prefWidth="125.0" rippleColor="#ff4646" text="Cancel Order" />
-            <MFXButton fx:id="btnSubmitChanges" layoutX="837.0" layoutY="294.0" onAction="#OnClickSubmitChangesButton" prefHeight="48.0" prefWidth="125.0" rippleColor="#adff49" text="Submit changes" />
+            <MFXTextField fx:id="txtEmail" layoutX="371.0" layoutY="192.0" prefHeight="50.0" prefWidth="230.0" />
+            <MFXButton fx:id="btnCancelOrder" layoutX="200.0" layoutY="294.0" onAction="#OnClickCancelOrderButton" prefHeight="48.0" prefWidth="125.0" rippleColor="#ff4646" text="Cancel Order" />
+            <MFXButton fx:id="btnSubmitChanges" layoutX="601.0" layoutY="294.0" onAction="#OnClickSubmitChangesButton" prefHeight="48.0" prefWidth="125.0" rippleColor="#adff49" text="Submit changes" />
          </children>
       </Pane>
    </children>

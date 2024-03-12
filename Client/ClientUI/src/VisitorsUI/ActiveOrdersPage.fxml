@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -12,7 +11,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="bntHandleOrder" onDragDetected="#OnClickHandleOrderButton" prefHeight="768.0" prefWidth="950.0">
+      <Pane prefHeight="768.0" prefWidth="950.0">
          <children>
             <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
             <Text fx:id="txtHeader" layoutX="366.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Orders">
@@ -20,7 +19,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <ImageView fx:id="imgExit" fitHeight="50.0" fitWidth="50.0" layoutX="1220.0" layoutY="15.0" onMouseClicked="#ExitClient" pickOnBounds="true" preserveRatio="true" />
             <TableView fx:id="tableOrders" layoutX="10.0" layoutY="100.0" prefHeight="500.0" prefWidth="930.0">
               <columns>
                 <TableColumn prefWidth="127.99996662139893" text="Order Number" />
@@ -32,7 +30,7 @@
                   <TableColumn prefWidth="120.0" text="Time" />
               </columns>
             </TableView>
-            <MFXButton layoutX="450.0" layoutY="625.0" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Handle Order" />
+            <MFXButton fx:id="bntHandleOrder" layoutX="425.0" layoutY="625.0" onAction="#OnClickHandleOrderButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Handle Order" />
          </children>
       </Pane>
    </children>

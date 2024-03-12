@@ -1,93 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.VisitorOrderVisitationPageController">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.VisitorOrderVisitationPageController">
    <children>
-      <Pane fx:id="pane" prefHeight="768.0" prefWidth="1280.0">
+      <Pane fx:id="pane" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <VBox fx:id="menuBox" layoutX="-30.0" prefHeight="806.0" prefWidth="288.0" styleClass="menu">
-               <Pane layoutX="-30.0" prefHeight="822.0" prefWidth="272.0" VBox.vgrow="ALWAYS">
-                  <children>
-                     <ImageView fx:id="backButton" fitHeight="48.0" fitWidth="48.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="appLogo" fitHeight="72.0" fitWidth="72.0" layoutX="65.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
-                     <Label fx:id="appName" graphicTextGap="15.0" layoutX="147.0" layoutY="118.0" styleClass="menu-label" text="GoNature" />
-                     <StackPane fx:id="logoContainer" />
-                     <Label fx:id="usernameLabel" layoutX="81.0" layoutY="181.0" styleClass="username" text="User: Israel Israeli" />
-                     <Label fx:id="userRoleLabel" layoutX="119.0" layoutY="205.0" styleClass="user-role" text="Visitor" />
-                     <Label fx:id="homePageLabel" layoutX="101.0" layoutY="260.0" styleClass="menu-item" text="Home Page" />
-                     <Label fx:id="dashboardLabel" layoutX="103.0" layoutY="322.0" styleClass="menu-item" text="Dashboard" />
-                     <Label fx:id="ordersLabel" layoutX="101.0" layoutY="378.0" styleClass="menu-item" text="Your orders" />
-                     <MFXButton fx:id="logoutBtnMenu" layoutX="81.0" layoutY="693.0" prefHeight="50.0" prefWidth="110.0" />
-                  </children>
-               </Pane>
-            </VBox>
-            <Text fx:id="Header" layoutX="425.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Visitation " textAlignment="CENTER" wrappingWidth="532.13671875">
+            <Text fx:id="Header" layoutX="336.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Visitation" textAlignment="CENTER" wrappingWidth="292.93670654296875">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Text>
-            <Separator fx:id="sepOrder" layoutX="425.0" layoutY="145.0" prefHeight="20.0" prefWidth="467.0" />
-            <Label fx:id="firstNameLbl" layoutX="425.0" layoutY="181.0" prefHeight="40.0" prefWidth="130.0" text="First Name :">
+            <Separator fx:id="sepOrder" layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Label fx:id="firstNameLbl" layoutX="337.0" layoutY="116.0" prefHeight="40.0" prefWidth="130.0" text="First Name :">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lastNameLbl" layoutX="425.0" layoutY="236.0" prefHeight="40.0" prefWidth="130.0" text="Last Name :" textAlignment="CENTER">
+            <Label fx:id="lastNameLbl" layoutX="337.0" layoutY="171.0" prefHeight="40.0" prefWidth="130.0" text="Last Name :" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="parkLbl" layoutX="424.0" layoutY="291.0" prefHeight="40.0" prefWidth="130.0" text="Choose Park :" textAlignment="CENTER">
+            <Label fx:id="parkLbl" layoutX="336.0" layoutY="226.0" prefHeight="40.0" prefWidth="130.0" text="Choose Park :" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXLegacyComboBox fx:id="parkCmbBox" layoutX="526.0" layoutY="291.0" prefHeight="30.0" prefWidth="200.0" />
-            <Label fx:id="dateLbl" layoutX="425.0" layoutY="331.0" prefHeight="40.0" prefWidth="130.0" text="Date :">
+            <MFXLegacyComboBox fx:id="parkCmbBox" layoutX="438.0" layoutY="226.0" prefHeight="30.0" prefWidth="200.0" />
+            <Label fx:id="dateLbl" layoutX="337.0" layoutY="273.0" prefHeight="40.0" prefWidth="130.0" text="Date :">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="timeOfVisitLbl" layoutX="425.0" layoutY="381.0" prefHeight="40.0" prefWidth="130.0" text="Time Of Visit:">
+            <Label fx:id="timeOfVisitLbl" layoutX="337.0" layoutY="316.0" prefHeight="40.0" prefWidth="130.0" text="Time Of Visit:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXLegacyComboBox fx:id="timeOfVisitCmbBox" layoutX="527.0" layoutY="389.0" prefHeight="24.0" prefWidth="200.0" />
-            <Label fx:id="numOfVisitorsLbl" layoutX="425.0" layoutY="431.0" prefHeight="40.0" prefWidth="152.0" text="Number Of Visitors : ">
+            <MFXLegacyComboBox fx:id="timeOfVisitCmbBox" layoutX="439.0" layoutY="324.0" prefHeight="24.0" prefWidth="200.0" />
+            <Label fx:id="numOfVisitorsLbl" layoutX="337.0" layoutY="366.0" prefHeight="40.0" prefWidth="152.0" text="Number Of Visitors : ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="phoneLbl" layoutX="425.0" layoutY="488.0" prefHeight="40.0" prefWidth="130.0" text="Phone:">
+            <Label fx:id="phoneLbl" layoutX="337.0" layoutY="423.0" prefHeight="40.0" prefWidth="130.0" text="Phone:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="emailLbl" layoutX="425.0" layoutY="544.0" prefHeight="40.0" prefWidth="130.0" text="Email: ">
+            <Label fx:id="emailLbl" layoutX="337.0" layoutY="479.0" prefHeight="40.0" prefWidth="130.0" text="Email: ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXButton fx:id="createOrderBtn" buttonType="RAISED" layoutX="691.0" layoutY="609.0" onAction="#OnClickCreateOrderButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Create Order" />
-            <MFXTextField fx:id="fNameText" layoutX="525.0" layoutY="176.0" prefHeight="30.0" prefWidth="200.0" />
-            <MFXTextField fx:id="lastNameText" layoutX="525.0" layoutY="231.0" prefWidth="200.0" />
-            <MFXDatePicker fx:id="datePicker" layoutX="525.0" layoutY="332.0" prefHeight="30.0" prefWidth="200.0" />
-            <MFXTextField fx:id="numOfVisitorsText" alignment="CENTER" layoutX="577.0" layoutY="426.0" prefWidth="150.0" text="1" />
-            <MFXTextField fx:id="phoneText" layoutX="527.0" layoutY="483.0" prefWidth="200.0" />
-            <MFXTextField fx:id="txtEmail" layoutX="527.0" layoutY="539.0" prefWidth="200.0" />
+            <MFXButton fx:id="createOrderBtn" buttonType="RAISED" layoutX="425.0" layoutY="600.0" onAction="#OnClickCreateOrderButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Create Order" />
+            <MFXTextField fx:id="fNameText" layoutX="437.0" layoutY="111.0" prefHeight="30.0" prefWidth="200.0" />
+            <MFXTextField fx:id="lastNameText" layoutX="437.0" layoutY="166.0" prefWidth="200.0" />
+            <MFXTextField fx:id="numOfVisitorsText" alignment="CENTER" layoutX="489.0" layoutY="361.0" prefWidth="150.0" text="1" />
+            <MFXTextField fx:id="phoneText" layoutX="439.0" layoutY="418.0" prefWidth="200.0" />
+            <MFXTextField fx:id="txtEmail" layoutX="439.0" layoutY="474.0" prefWidth="200.0" />
+            <DatePicker fx:id="datePicker" layoutX="439.0" layoutY="278.0" prefHeight="30.0" prefWidth="200.0" />
          </children>
       </Pane>
    </children>

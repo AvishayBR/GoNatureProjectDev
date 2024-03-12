@@ -5,55 +5,52 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.AuthenticateWithIDPageController">
+<StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.AuthenticateWithIDPageController">
    <children>
-      <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <ImageView fx:id="im1" fitHeight="43.0" fitWidth="42.0" layoutX="1224.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-            <Separator fx:id="sep" layoutX="256.0" layoutY="58.0" prefHeight="12.0" prefWidth="1019.0" />
-            <VBox fx:id="menu" prefHeight="768.0" prefWidth="250.0" />
-            <Text fx:id="header" layoutX="556.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Group Guide Dashboard" textAlignment="CENTER">
+            <Separator fx:id="sep" layoutY="58.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="220.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Group Guide Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="1.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text2" layoutX="288.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
+            <Text layoutX="1.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text1" layoutX="288.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text11" layoutX="286.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text12" layoutX="284.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
+            <Text layoutX="1.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fx:id="text1211" layoutX="283.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
+            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="136.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="586.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
+            <MFXButton fx:id="btnOrderVisit" buttonType="RAISED" layoutX="150.0" layoutY="458.0" onAction="#OnClickOrderVisitButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="Order a visit">
                <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="387.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="706.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
-            <MFXButton fx:id="btnOrderVisit" buttonType="RAISED" layoutX="362.0" layoutY="458.0" onAction="#OnClickOrderVisitButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="Order a visit">
-               <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="20.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="bntViewOrders" buttonType="RAISED" layoutX="766.0" layoutY="458.0" onAction="#OnClickViewOrdersButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="View orders">
+            <MFXButton fx:id="bntViewOrders" buttonType="RAISED" layoutX="600.0" layoutY="458.0" onAction="#OnClickViewOrdersButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="View orders">
                <font>
                   <Font size="20.0" />
                </font>
