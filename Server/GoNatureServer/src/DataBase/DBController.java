@@ -25,14 +25,14 @@ public class DBController {
      * @param values    The values to insert into the table. Assumes a prepared statement format.
      * @return true if the insert operation was successful, false otherwise.
      */
-    public boolean insertRecord(String tableName, String... values) throws SQLException {
+    public boolean insertRecord(String tableName, String columns, String... values) throws SQLException {
         if (tableName.isEmpty()) {
             throw new SQLException("Table name cannot be empty");
         }
         if (values.length == 0) {
             throw new SQLException("No values provided");
         }
-        String sql = "INSERT INTO " + tableName + " VALUES (" + String.join(", ", values) + ")";
+        String sql = "INSERT INTO " + tableName + "(" + columns + ")" +" VALUES (" + String.join(", ", values) + ")";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {

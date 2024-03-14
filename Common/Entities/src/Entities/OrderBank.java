@@ -45,6 +45,18 @@ public class OrderBank implements Iterable<Order>, Serializable {
         return false;
     }
 
+    public Boolean insertOrderArray(ArrayList<Order> orders) {
+        ArrayList<Order> newOrders = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getOrderType() == ordersType)
+                newOrders.add(order);
+            else
+                return false;
+        }
+        this.orders = newOrders;
+        return false;
+    }
+
     /**
      * Retrieves the type of orders held by this OrderBank.
      *

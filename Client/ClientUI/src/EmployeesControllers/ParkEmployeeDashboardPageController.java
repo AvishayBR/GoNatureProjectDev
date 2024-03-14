@@ -1,22 +1,26 @@
 package EmployeesControllers;
 
-import CommonClient.controllers.ApplicationWindowController;
 import CommonClient.controllers.BaseController;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class ParkEmployeeDashboardPageController extends BaseController {
 
     @FXML
-    private Text txtDescription;
+    private MFXButton btnAvailableSpot;
 
     @FXML
-    private Text txtHeader;
+    private MFXButton btnGenerateBill;
 
     @FXML
-    private VBox vboxMenu;
+    void OnClickAvailableSpotButton(ActionEvent event) {
 
+    }
 
+    @FXML
+    void OnClickGenerateBillButton(ActionEvent event) {
+
+    }
 
 }

@@ -1,5 +1,10 @@
 package CommonClient.controllers;
 
+import CommonClient.ClientUI;
+import Entities.Message;
+import Entities.OpCodes;
+import Entities.Role;
+import Entities.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,9 +20,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import Entities.Role;
-
-
 
 public class ApplicationWindowController implements Initializable {
 
@@ -25,23 +27,38 @@ public class ApplicationWindowController implements Initializable {
     private BorderPane mainPane;
     private Map<String, Parent> pagesCache = new HashMap<>();
     private Parent menuSider;
-
+    private User user;
+    private Object Data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    private void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public BorderPane getRoot() {
+        return this.mainPane;
+    }
+
     private Parent loadPage(String fxmlPath) {
         try {
+            // If the page we're loading is not cached yet.
             if (!pagesCache.containsKey(fxmlPath)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent page = loader.load();
                 Object controller = loader.getController();
-                if (controller instanceof BaseController) { // Assuming all your controllers extend a common BaseController that has setApplicationWindowController method.
+                if (controller instanceof BaseController) {
                     ((BaseController) controller).setApplicationWindowController(this);
                 }
                 pagesCache.put(fxmlPath, page);
             }
+
             return pagesCache.get(fxmlPath);
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +66,8 @@ public class ApplicationWindowController implements Initializable {
         }
     }
 
-    public void loadMenu(String username, String role) {
+    public void loadMenu(User user) {
+        setUser(user);
         try {
             if (menuSider == null) {
                 // Ensure FXMLLoader is used to load the FXML and retrieve the controller from it
@@ -62,9 +80,9 @@ public class ApplicationWindowController implements Initializable {
                     ((BaseController) menuController).setApplicationWindowController(this);
                 }
                 if (menuController != null) { // This check is technically redundant if load() succeeded without exception
-                    menuController.setRole(role);
-                    menuController.setUsername(username);
-                    menuController.buildMenuItems();
+                    menuController.setRole(Role.roleToString(user.getRole()));
+                    menuController.setUsername(user.getUsername());
+                    menuController.buildMenuItems(this);
                 } else {
                     // Handle the case where the controller wasn't retrieved successfully
                     System.out.println("Failed to retrieve MenuSiderController.");
@@ -77,14 +95,25 @@ public class ApplicationWindowController implements Initializable {
     }
 
     public void setCenterPage(String fxmlPath) {
-        mainPane.getChildren().clear(); // Consider if you need to remove all children or just the center.
+        mainPane.getChildren().remove(mainPane.getCenter());
         Parent page = loadPage(fxmlPath);
         if (page != null) {
             mainPane.setCenter(page);
-            if (!Objects.equals(fxmlPath, "/VisitorsUI/LoginPage.fxml")) {
-                mainPane.setLeft(menuSider);
+            Parent newMenu = null;
+            if (!Objects.equals(fxmlPath, "/CommonClient/gui/LoginPage.fxml") &&
+                    !Objects.equals(fxmlPath, "/CommonClient/gui/HomePage.fxml")) {
+                newMenu = menuSider;
             }
+            mainPane.setLeft(newMenu);
         }
+    }
+
+    public void logout() {
+        Object msg = new Message(OpCodes.OP_LOGOUT, user.getUsername(), null);
+        ClientUI.client.accept(msg);
+        loadDashboardPage(Role.ROLE_GUEST);
+        this.user = null;
+        menuSider = null;
     }
 
     public void loadDashboardPage(Role role) {
@@ -94,8 +123,9 @@ public class ApplicationWindowController implements Initializable {
         roleToFxmlPath.put(Role.ROLE_PARK_EMPLOYEE, "/EmployeesUI/ParkEmployeeDashboardPage.fxml");
         roleToFxmlPath.put(Role.ROLE_PARK_SUPPORT_REPRESENTATIVE, "/EmployeesUI/SupportRepresentativeDashboardPage.fxml");
         roleToFxmlPath.put(Role.ROLE_SINGLE_VISITOR, "/VisitorsUI/VisitorDashboardPage.fxml");
+        roleToFxmlPath.put(Role.ROLE_VISITOR_GROUP_GUIDE, "/VisitorsUI/VisitorGroupGuideDashboardPage.fxml");
 
-        String fxmlPath = roleToFxmlPath.getOrDefault(role, "/VisitorsUI/LoginPage.fxml");
+        String fxmlPath = roleToFxmlPath.getOrDefault(role, "/CommonClient/gui/LoginPage.fxml");
         setCenterPage(fxmlPath);
     }
 
@@ -105,7 +135,7 @@ public class ApplicationWindowController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/CommonClient/gui/ApplicationWindow.fxml"));
             Parent root = loader.load(); // This should initialize mainPane as part of the loading process
 
-            // Now that root is loaded, mainPane should be initialized
+
             ApplicationWindowController controller = loader.getController();
 
             Scene scene = new Scene(root);
@@ -118,10 +148,17 @@ public class ApplicationWindowController implements Initializable {
             primaryStage.setResizable(false);
             primaryStage.show();
 
-            // Now it's safe to manipulate mainPane
             controller.setCenterPage("/CommonClient/gui/ConnectClientPage.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Object getData() {
+        return Data;
+    }
+
+    public void setData(Object data) {
+        Data = data;
     }
 }

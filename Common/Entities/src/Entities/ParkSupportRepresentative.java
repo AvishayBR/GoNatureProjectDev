@@ -14,11 +14,11 @@ public class ParkSupportRepresentative extends ParkEmployee implements Serializa
      *
      * @param username    The username of the support representative.
      * @param password    The password of the support representative.
-     * @param emailAdress The email address of the support representative.
+     * @param emailAddress The email address of the support representative.
      * @param park        The park associated with the support representative.
      */
-    public ParkSupportRepresentative(String username, String password, String emailAdress, Park park) {
-        super(username, password, emailAdress, park);
+    public ParkSupportRepresentative(String username, String password, String emailAddress, Park park) {
+        super(username, password, emailAddress, park);
         AccessParks = new ParkBank(park);
         role = Role.ROLE_PARK_SUPPORT_REPRESENTATIVE;
 
@@ -28,11 +28,11 @@ public class ParkSupportRepresentative extends ParkEmployee implements Serializa
      * Constructs a ParkSupportRepresentative object with the specified parameters.
      *
      * @param user        The user object representing the support representative.
-     * @param emailAdress The email address of the support representative.
+     * @param emailAddress The email address of the support representative.
      * @param park        The park associated with the support representative.
      */
-    public ParkSupportRepresentative(User user, String emailAdress, Park park) {
-        super(user, emailAdress, park);
+    public ParkSupportRepresentative(User user, String emailAddress, Park park) {
+        super(user, emailAddress, park);
         AccessParks = new ParkBank(park);
         role = Role.ROLE_PARK_SUPPORT_REPRESENTATIVE;
 
@@ -43,12 +43,12 @@ public class ParkSupportRepresentative extends ParkEmployee implements Serializa
      *
      * @param username    The username of the support representative.
      * @param password    The password of the support representative.
-     * @param emailAdress The email address of the support representative.
+     * @param emailAddress The email address of the support representative.
      * @param park        The park associated with the support representative.
      * @param parks       The ParkBank object containing park access information.
      */
-    public ParkSupportRepresentative(String username, String password, String emailAdress, Park park, ParkBank parks) {
-        super(username, password, emailAdress, park);
+    public ParkSupportRepresentative(String username, String password, String emailAddress, Park park, ParkBank parks) {
+        super(username, password, emailAddress, park);
         AccessParks = parks;
         role = Role.ROLE_PARK_SUPPORT_REPRESENTATIVE;
 
@@ -58,12 +58,12 @@ public class ParkSupportRepresentative extends ParkEmployee implements Serializa
      * Constructs a ParkSupportRepresentative object with the specified parameters.
      *
      * @param user        The user object representing the support representative.
-     * @param emailAdress The email address of the support representative.
+     * @param emailAddress The email address of the support representative.
      * @param park        The park associated with the support representative.
      * @param parks       The ParkBank object containing park access information.
      */
-    public ParkSupportRepresentative(User user, String emailAdress, Park park, ParkBank parks) {
-        super(user, emailAdress, park);
+    public ParkSupportRepresentative(User user, String emailAddress, Park park, ParkBank parks) {
+        super(user, emailAddress, park);
         AccessParks = parks;
         role = Role.ROLE_PARK_SUPPORT_REPRESENTATIVE;
 

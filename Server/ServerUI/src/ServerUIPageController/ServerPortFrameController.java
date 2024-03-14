@@ -1,7 +1,9 @@
 package ServerUIPageController;
 
+import GoNatureServer.GoNatureServer;
 import ServerUIPage.ServerUI;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -78,6 +80,8 @@ public class ServerPortFrameController implements Initializable {
     private TableColumn<Map, String> colStatus;
 
 
+
+
     public String getPort() {
         return portxt.getText();
     }
@@ -148,6 +152,8 @@ public class ServerPortFrameController implements Initializable {
     }
 
 
+
+
     public String getURLComboBox() {
         return (String) URLComboBox.getValue();
     }
@@ -179,8 +185,12 @@ public class ServerPortFrameController implements Initializable {
             return row;
         });
     }
+    public void resetTableClients() {
+        tableClients.getItems().clear();
+    }
 
     public void addRow(String name, String ip) {
+        // Todo: instead of ip, map the SOCKET, so that we can use it to send messages to the client
         Map<String, String> newRow = new HashMap<>();
         newRow.put("name", name);
         newRow.put("ip", ip);

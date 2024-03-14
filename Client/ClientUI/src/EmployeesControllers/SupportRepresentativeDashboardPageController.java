@@ -1,19 +1,34 @@
 package EmployeesControllers;
 
-import CommonClient.controllers.ApplicationWindowController;
 import CommonClient.controllers.BaseController;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class SupportRepresentativeDashboardPageController extends BaseController {
 
     @FXML
-    private MFXButton checkParkBtn;
+    private MFXButton btnCheckParkAvailability;
 
     @FXML
-    private MFXButton issueBillBtn;
+    private MFXButton btnIssueBill;
 
     @FXML
-    private MFXButton registerGuideBtn;
+    private MFXButton btnRegisterGuide;
+
+    @FXML
+    void OnClickCheckParkAvailabilityButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClickIssueBillButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClickRegisterGuideButton(ActionEvent event) {
+
+    }
 
 }

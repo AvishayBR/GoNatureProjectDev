@@ -8,19 +8,19 @@ import java.io.Serializable;
  * Represents a park employee entity, extending the User class.
  */
 public class ParkEmployee extends User implements Serializable {
-    private String EmailAdress;
+    private String EmailAddress;
     private Park Park;
 
     /**
      * Constructs a new ParkEmployee object with the provided user, email address, and park.
      *
      * @param user        The user object containing username and password.
-     * @param EmailAdress The email address of the park employee.
+     * @param EmailAddress The email address of the park employee.
      * @param Park        The park associated with the employee.
      */
-    public ParkEmployee(User user, String EmailAdress, Park Park) {
+    public ParkEmployee(User user, String EmailAddress, Park Park) {
         super(user.getUsername(), user.getPassword());
-        this.EmailAdress = EmailAdress;
+        this.EmailAddress = EmailAddress;
         this.Park = Park;
         role = Role.ROLE_PARK_EMPLOYEE;
     }
@@ -30,12 +30,12 @@ public class ParkEmployee extends User implements Serializable {
      *
      * @param username    The username of the park employee.
      * @param password    The password of the park employee.
-     * @param EmailAdress The email address of the park employee.
+     * @param EmailAddress The email address of the park employee.
      * @param Park        The park associated with the employee.
      */
-    public ParkEmployee(String username, String password, String EmailAdress, Park Park) {
+    public ParkEmployee(String username, String password, String EmailAddress, Park Park) {
         super(username, password);
-        this.EmailAdress = EmailAdress;
+        this.EmailAddress = EmailAddress;
         this.Park = Park;
         role = Role.ROLE_PARK_EMPLOYEE;
 
@@ -53,11 +53,11 @@ public class ParkEmployee extends User implements Serializable {
     /**
      * Sets the email address of the park employee.
      *
-     * @param emailAdress The email address to be set.
+     * @param emailAddress The email address to be set.
      */
-    public void setEmailAdress(String emailAdress) {
-        if (CommonUtils.isEmailAddressValid(emailAdress)) {
-            EmailAdress = emailAdress;
+    public void setEmailAddress(String emailAddress) {
+        if (CommonUtils.isEmailAddressValid(emailAddress)) {
+            EmailAddress = emailAddress;
         }
     }
 
@@ -66,8 +66,8 @@ public class ParkEmployee extends User implements Serializable {
      *
      * @return The email address of the park employee.
      */
-    public String getEmailAdress() {
-        return EmailAdress;
+    public String getEmailAddress() {
+        return EmailAddress;
     }
 
     /**

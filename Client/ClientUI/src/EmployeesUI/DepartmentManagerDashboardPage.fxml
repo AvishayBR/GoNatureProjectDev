@@ -7,28 +7,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.DepartmentManagerDashboardPageController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.DepartmentManagerDashboardPageController">
    <children>
-      <Pane fx:id="regpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text fx:id="headerTxt" layoutX="503.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department Manager Dashboard" textAlignment="CENTER">
+            <Text layoutX="246.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department Manager Dashboard" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <MFXButton fx:id="issueBtn" styleClass="actButtonGreen" layoutX="618.0" layoutY="186.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="110.0" text="Issue Reports" />
-            <Text fx:id="issueTxt" layoutX="522.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prepare and issue your reports">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
-            <Text fx:id="viewRequestsTxt" layoutX="529.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Park Manager's Requests">
+            <MFXButton fx:id="btnIssueReports" layoutX="210.0" layoutY="470.0" mnemonicParsing="false" onAction="#OnClickIssueReportsButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Issue Reports" />
+            <Text layoutX="125.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prepare and issue your reports">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <MFXButton fx:id="viewRequestsBtn" styleClass="actButtonGreen" layoutX="618.0" layoutY="384.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="110.0" text="View Requests" />
-            <Separator layoutX="262.0" layoutY="58.0" prefHeight="12.0" prefWidth="1013.0" />
+            <Text layoutX="520.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Park Manager's Requests">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <MFXButton fx:id="btnViewRequests" layoutX="610.0" layoutY="470.0" mnemonicParsing="false" onAction="#OnClickViewRequestsButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="View Requests" />
+            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Department Manager Dashboard! Here, you can:&#10;&#10;• View Park Manager's Reports: Stay informed about park operations&#10;by accessing detailed reports prepared by the Park Manager.&#10;&#10;• View Park Manager's Requests: Review and respond to requests&#10;made by the Park Manager regarding park operations and management.&#10;&#10;Efficiently oversee park operations and collaborate effectively with the Park Manager&#10;by using these essential tools.">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

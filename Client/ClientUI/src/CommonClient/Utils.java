@@ -23,4 +23,21 @@ public class Utils {
         // Format the Date object into a string
         return dateFormat.format(visitTime);
     }
+
+    public static Boolean isIDValid(String ID) {
+        // Check if the string length is exactly 9 characters
+        if (ID.length() != 9) {
+            return false;
+        }
+
+        // Check if each character is a digit
+        for (char c : ID.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+
+        // If all characters are digits and string length is 9, return true
+        return true;
+    }
 }

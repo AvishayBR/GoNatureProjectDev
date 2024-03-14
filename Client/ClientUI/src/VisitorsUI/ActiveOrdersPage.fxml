@@ -9,29 +9,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane prefHeight="768.0" prefWidth="950.0">
-         <children>
-            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
-            <Text fx:id="txtHeader" layoutX="366.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Orders">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Text>
-            <TableView fx:id="tableOrders" layoutX="10.0" layoutY="100.0" prefHeight="500.0" prefWidth="930.0">
-              <columns>
-                <TableColumn prefWidth="127.99996662139893" text="Order Number" />
-                <TableColumn prefWidth="109.60000610351562" text="Park Name" />
-                  <TableColumn prefWidth="113.59996032714844" text="Number of Visitors" />
-                  <TableColumn prefWidth="140.0" text="Telephone" />
-                  <TableColumn prefWidth="212.800048828125" text="Email" />
-                  <TableColumn prefWidth="104.00006103515625" text="Date" />
-                  <TableColumn prefWidth="120.0" text="Time" />
-              </columns>
-            </TableView>
-            <MFXButton fx:id="bntHandleOrder" layoutX="425.0" layoutY="625.0" onAction="#OnClickHandleOrderButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Handle Order" />
-         </children>
-      </Pane>
-   </children>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.ActiveOrdersPageController">
+    <children>
+        <Pane fx:id="bntHandleOrder" onDragDetected="#OnClickHandleOrderButton" prefHeight="768.0" prefWidth="950.0">
+            <children>
+                <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+                <Text fx:id="txtHeader" layoutX="366.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Orders">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Text>
+                <TableView fx:id="tableOrders" layoutX="10.0" layoutY="100.0" prefHeight="500.0" prefWidth="930.0">
+                    <columns>
+                        <TableColumn prefWidth="127.99996662139893" text="Order Number" />
+                        <TableColumn prefWidth="109.60000610351562" text="Park Name" />
+                        <TableColumn prefWidth="113.59996032714844" text="Number of Visitors" />
+                        <TableColumn prefWidth="140.0" text="Telephone" />
+                        <TableColumn prefWidth="212.800048828125" text="Email" />
+                        <TableColumn prefWidth="104.00006103515625" text="Date" />
+                        <TableColumn prefWidth="120.0" text="Time" />
+                    </columns>
+                </TableView>
+                <MFXButton layoutX="425.0" layoutY="625.0" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Handle Order" />
+            </children>
+        </Pane>
+    </children>
 </StackPane>

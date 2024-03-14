@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.RegisterGroupGuideController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text fx:id="txtHeader" layoutX="556.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Group Guide" textAlignment="CENTER">
+            <Text layoutX="302.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Group Guide" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <Button fx:id="btnSubmit" layoutX="606.0" layoutY="282.0" mnemonicParsing="false" onAction="#OnClickSubmitButton" prefHeight="51.0" prefWidth="117.0" text="Submit" />
-            <ImageView fx:id="imgExit" fitHeight="50.0" fitWidth="50.0" layoutX="1220.0" layoutY="15.0" onMouseClicked="#ExitClient" pickOnBounds="true" preserveRatio="true" />
-            <Separator layoutX="250.0" layoutY="63.0" prefHeight="14.0" prefWidth="1030.0" />
-            <Text layoutX="500.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group Guide ID:">
+            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="291.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group Guide ID:">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtGroupGuideID" layoutX="654.0" layoutY="227.0" prefHeight="30.0" prefWidth="175.0" />
-            <Label fx:id="lblErrorGroupID" layoutX="665.0" layoutY="204.0" text="errorMsg" textFill="RED">
+            <Label fx:id="lblErrorMsg" layoutX="456.0" layoutY="163.0" text="errorMsg" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Text fx:id="txtDescription" layoutX="251.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Easily register a customer as a group guide by entering their ID.&#10;Ensure accuracy by verifying the ID before submitting.">
+            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Easily register a customer as a group guide by entering their ID.&#10;Ensure accuracy by verifying the ID before submitting.">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <VBox fx:id="vboxMenu" prefHeight="768.0" prefWidth="250.0" />
+            <MFXTextField fx:id="txtGroupGuideID" layoutX="445.0" layoutY="186.0" prefHeight="30.0" prefWidth="200.0" />
+            <MFXButton fx:id="btnSubmit" buttonType="RAISED" layoutX="384.0" layoutY="260.0" onAction="#OnClickSubmitButton" prefHeight="50.0" prefWidth="100.0" rippleColor="#adff49" text="Submit" />
          </children>
       </Pane>
    </children>

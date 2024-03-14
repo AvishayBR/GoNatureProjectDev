@@ -2,60 +2,61 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.AuthenticateWithIDPageController">
-   <children>
-      <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
-         <children>
-            <Separator fx:id="sep" layoutY="58.0" prefHeight="14.0" prefWidth="950.0" />
-            <Text layoutX="220.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Group Guide Dashboard" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Text>
-            <Text layoutX="1.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <Text layoutX="1.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <Text layoutX="1.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <Text layoutX="1.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <Text layoutX="1.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="136.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="112.0" fitWidth="178.0" layoutX="586.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
-            <MFXButton fx:id="btnOrderVisit" buttonType="RAISED" layoutX="150.0" layoutY="458.0" onAction="#OnClickOrderVisitButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="Order a visit">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </MFXButton>
-            <MFXButton fx:id="bntViewOrders" buttonType="RAISED" layoutX="600.0" layoutY="458.0" onAction="#OnClickViewOrdersButton" prefHeight="50.0" prefWidth="150.0" rippleColor="#adff49" text="View orders">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </MFXButton>
-         </children>
-      </Pane>
-   </children>
+<StackPane fx:id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.VisitorGroupGuideDashboardPageController">
+    <children>
+        <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
+            <children>
+                <Separator fx:id="sep" layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+                <Text fx:id="header" layoutX="220.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitor Group Guide Dashboard" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Text>
+                <Text fx:id="text2" layoutX="1.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Go Nature dashboard!" wrappingWidth="915.5732421875">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Text>
+                <Text fx:id="text1" layoutX="1.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you can easily plan and schedule your next park visitation with just a few clicks." wrappingWidth="915.5732345581055">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Text>
+                <Text fx:id="text11" layoutX="1.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whether you're looking for a serene nature trail, a family-friendly picnic spot, " wrappingWidth="915.5732345581055">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Text>
+                <Text fx:id="text12" layoutX="1.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or an adventurous hiking trail, we've got you covered." wrappingWidth="915.5732345581055">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Text>
+                <Text fx:id="text1211" layoutX="1.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're dedicated to making your park visitation experience enjoyable and hassle-free. Start exploring and make the most of your outdoor adventures with our park visitation app!" wrappingWidth="915.5732345581055">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Text>
+                <ImageView fx:id="pngOrderVisit" fitHeight="112.0" fitWidth="178.0" layoutX="174.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="/assets/orderReservationIcon.png" />
+                    </image>
+                </ImageView>
+                <MFXButton fx:id="btnOrderVisit" buttonType="RAISED" layoutX="173.0" layoutY="473.0" onAction="#OnClickOrderVisitButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Order a visit" />
+                <MFXButton fx:id="btnViewOrders" buttonType="RAISED" layoutX="621.0" layoutY="473.0" onAction="#OnClickViewOrdersButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="View orders" />
+                <ImageView fx:id="pngViewOrders" fitHeight="112.0" fitWidth="178.0" layoutX="625.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="/assets/viewAllOrders.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
 </StackPane>

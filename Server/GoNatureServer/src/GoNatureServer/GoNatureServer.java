@@ -6,11 +6,15 @@ package GoNatureServer;
 import CommonServer.ocsf.AbstractServer;
 import CommonServer.ocsf.ConnectionToClient;
 import DataBase.DBConnection;
-import Entities.Message;
+import Entities.*;
 import ServerUIPageController.ServerPortFrameController;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
@@ -30,6 +34,8 @@ public class GoNatureServer extends AbstractServer {
     private static GoNatureServer server;
     private ServerPortFrameController controller;
     private DBConnection db;
+
+    private Map<String, ConnectionToClient> authenticatedUsers = new ConcurrentHashMap<>();
 
     private boolean connected = true;
 
@@ -90,57 +96,123 @@ public class GoNatureServer extends AbstractServer {
             }
         }
         this.controller.addtolog("Server listening for connections on port " + getPort());
+        // Start a new thread for running the task every second
+        new Thread(() -> {
+            try {
+                while (server != null && server.isListening()) {
+                    Thread[] clientConnections = getClientConnections();
+                    controller.resetTableClients();
+                    // Here you can process all the clients as needed
+                    for (Thread clientThread : clientConnections) {
+                        ConnectionToClient client = (ConnectionToClient) clientThread;
+                        controller.addRow(client.getInetAddress().getHostName(), client.getInetAddress().getHostAddress());
+                    }
+                    try {
+                        Thread.sleep(1000); // Wait for 1 second before the next iteration
+                    } catch (InterruptedException e) {
+                        System.out.println("The client processing thread was interrupted.");
+                    }
+                }
+            } catch (NullPointerException e) {
+
+            }
+        }, "Client Processing Thread").start();
         server.controller.toggleControllers(true);
     }
 
-    public void handleMessageFromClient(Object msg, ConnectionToClient client) throws IOException {
-        Message newMsg = new Message(null,null, null);
 
-        if (msg instanceof String) {
-            if (msg.equals("quit")) {
-                this.controller.addtolog("Client " + client + " Disconnected");
-                controller.removeRowByIP(client.getInetAddress().getHostAddress());
-                client.close();
-                return;
-            }
-        }
-/*
+    public void handleMessageFromClient(Object msg, ConnectionToClient client) throws IOException {
+        Message newMsg = new Message(null, null, null);
+
         if (msg instanceof Message) {
-            switch (((Message) msg).GetMsgOpcode()) {
-                case SYNC_HANDSHAKE:
-                    newMsg.SetMsgOpcodeValue(OpCodes.SYNC_HANDSHAKE);
-                    client.sendToClient(newMsg);
-                case GETALLORDERS:
-                    if (((Message) msg).GetMsgData() == null) {
-                        newMsg.SetMsgOpcodeValue(OpCodes.GETALLORDERS);
-                        newMsg.SetMsgData(db.getOrders());
-                        client.sendToClient(newMsg);
-                    } else {
-                        controller.addtolog("Error Data Type");
-                    }
+            switch (((Message) msg).getMsgOpcode()) {
+                case OP_SYNC_HANDSHAKE:
+                    client.sendToClient(msg);
                     break;
-                case GETORDERBYID:
-                    if (((Message) msg).GetMsgData() instanceof String) {
-                        newMsg.SetMsgOpcodeValue(OpCodes.GETORDERBYID);
-                        newMsg.SetMsgData(db.getOrderById((String) (((Message) msg).GetMsgData())));
-                        client.sendToClient(newMsg);
-                    } else {
-                        controller.addtolog("Error Data Type");
-                    }
+
+                case OP_LOGOUT:
+                    authenticatedUsers.remove(((Message) msg).getMsgUserName());
+                    client.sendToClient("logged out successfully");
                     break;
-                case UPDATEORDER:
-                    if (((Message) msg).GetMsgData() instanceof Order) {
-                        newMsg.SetMsgOpcodeValue(OpCodes.UPDATEORDER);
-                        newMsg.SetMsgData(db.updateOrderById((Order) (((Message) msg).GetMsgData())));
-                        client.sendToClient(newMsg);
-                    } else {
-                        controller.addtolog("Error Data Type");
+
+                case OP_SIGN_IN:
+                    User userCredentials = (User) ((Message) msg).getMsgData();
+                    if (authenticatedUsers.containsKey(userCredentials.getUsername())) {
+                        if (authenticatedUsers.get(userCredentials.getUsername()).getInetAddress() == null) {
+                            authenticatedUsers.remove(userCredentials.getUsername());
+                        } else {
+                            Message respondMsg = new Message(OpCodes.OP_SIGN_IN_ALREADY_LOGGED_IN, userCredentials.getUsername(), null);
+                            client.sendToClient(respondMsg);
+                            return;
+                        }
                     }
+                    User authenticatedUser = db.login(userCredentials.getUsername(), userCredentials.getPassword());
+                    //User authenticatedUser= new User("test","123",Role.ROLE_SINGLE_VISITOR);
+                    if (authenticatedUser == null) {
+                        Message respondMsg = new Message(OpCodes.OP_SIGN_IN, "", null);
+                        client.sendToClient(respondMsg);
+                        return;
+                    }
+                    authenticatedUsers.put(authenticatedUser.getUsername(), client);
+                    Message respondMsg = new Message(OpCodes.OP_SIGN_IN, authenticatedUser.getUsername(), authenticatedUser);
+                    client.sendToClient(respondMsg);
                     break;
+                case OP_GET_VISITOR_ORDERS:
+                    AbstractVisitor visitor = (AbstractVisitor) ((Message) msg).getMsgData();
+
+                    String visitorID = visitor.getID();
+                    String visitorUserName = visitor.getUsername();
+
+                    ArrayList<Order> requestedOrders = db.getUserOrders(visitorID);
+                    OrderBank orders;
+                    if (visitor instanceof SingleVisitor) {
+                        orders = new OrderBank(OrderType.ORD_TYPE_SINGLE);
+                    } else {
+                        orders = new OrderBank(OrderType.ORD_TYPE_GROUP);
+                    }
+                    if (orders.insertOrderArray(requestedOrders)) {
+                        Message getVisitorOrdersMsg = new Message(OpCodes.OP_GET_VISITOR_ORDERS, visitorUserName, requestedOrders);
+                        client.sendToClient(getVisitorOrdersMsg);
+                    } else {
+                        Message getVisitorOrdersMsg = new Message(OpCodes.OP_DB_ERR);
+                        client.sendToClient(getVisitorOrdersMsg);
+                    }
+                case OP_CREATE_NEW_VISITATION:
+                    Order order = (Order) ((Message) msg).getMsgData();
+                    order.setOrderStatus(OrderStatus.STATUS_CONFIRMED_PENDING_PAYMENT);
+
+                    if (db.checkOrderExists(order.getVisitorID(), order.getParkID(), order.getVisitationDate())) {
+                        Message createOrderMsg = new Message(OpCodes.OP_ORDER_ALREADY_EXIST);
+                        client.sendToClient(createOrderMsg);
+                        return;
+                    }
+                    Order newOrder = db.addOrder(order);
+                    Message createOrderMsg = new Message(OpCodes.OP_CREATE_NEW_VISITATION, ((Message) msg).getMsgUserName(), newOrder);
+                    client.sendToClient(createOrderMsg);
+                case OP_GET_USER_ORDERS_BY_USERID:
+                    String[] data = (String[]) ((Message) msg).getMsgData();
+                    Order userOrder = db.getUserOrderByUserID(data[0], data[1]);
+                    Message getUserMsg = new Message(OpCodes.OP_GET_USER_ORDERS_BY_USERID, "", userOrder);
+                    client.sendToClient(getUserMsg);
+                    break;
+                case OP_QUIT:
+                    if (authenticatedUsers.containsValue(client)) {
+                        for (Map.Entry<String, ConnectionToClient> entry : authenticatedUsers.entrySet()) {
+                            if (entry.getValue() == client) {
+                                authenticatedUsers.remove(entry.getKey());
+                                break;
+                            }
+                        }
+                    }
+                    this.controller.addtolog("Client " + client + " Disconnected");
+                    controller.removeRowByIP(client.getInetAddress().getHostAddress());
+                    client.close();
+                    break;
+
                 default:
                     controller.addtolog("Error Unknown Opcode");
             }
-        }*/
+        }
     }
 
 
@@ -180,7 +252,7 @@ public class GoNatureServer extends AbstractServer {
 
     @Override
     protected void clientConnected(ConnectionToClient client) {
-        controller.addRow(client.getInetAddress().getHostName(), client.getInetAddress().getHostAddress());
+        //controller.addRow(client.getInetAddress().getHostName(), client.getInetAddress().getHostAddress());
     }
 
 

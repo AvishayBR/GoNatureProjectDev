@@ -7,34 +7,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.SupportRepresentativeDashboardPageController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.SupportRepresentativeDashboardPageController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text layoutX="290.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Support Representative Dashboard" textAlignment="CENTER">
+            <Text layoutX="180.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Support Representative Dashboard" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="71.0" prefHeight="12.0" prefWidth="931.0" />
-            <Text layoutX="14.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check Available Spots In All Parks" wrappingWidth="266.84375">
+            <Text layoutX="61.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check Available Spots In All Parks" wrappingWidth="266.84375">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="411.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue a bill for an order">
+            <Text layoutX="415.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue a bill for an order">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="709.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register a Group Guide">
+            <Text layoutX="724.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register a Group Guide">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <MFXButton fx:id="checkParkBtn" styleClass="actButtonGreen" layoutX="82.0" layoutY="308.0" prefHeight="105.0" prefWidth="150.0" text="Check Park Availability" />
-            <MFXButton fx:id="issueBillBtn" styleClass="actButtonGreen" layoutX="423.0" layoutY="308.0" prefHeight="105.0" prefWidth="150.0" text="Issue a Bill" />
-            <MFXButton fx:id="registerGuideBtn" styleClass="actButtonGreen" layoutX="734.0" layoutY="308.0" prefHeight="105.0" prefWidth="150.0" text="Register a Guide" />
+            <MFXButton fx:id="btnCheckParkAvailability" layoutX="143.0" layoutY="520.0" onAction="#OnClickCheckParkAvailabilityButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Check Park&#10;Availability" textAlignment="CENTER" />
+            <MFXButton fx:id="btnIssueBill" layoutX="450.0" layoutY="520.0" onAction="#OnClickIssueBillButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Issue a Bill" />
+            <MFXButton fx:id="btnRegisterGuide" layoutX="760.0" layoutY="520.0" onAction="#OnClickRegisterGuideButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Register&#10;a Guide" textAlignment="CENTER" />
+            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Support Representative Dashboard!&#10;&#10;As an employee, you have to give the best possible service&#10;to every customer.&#10;This dashboard allows you to do the following:&#10;• Easily create detailed bills for park visitors, covering entry fees and more.&#10;• Quickly check if there is an available spot in the park, for a casual visit.&#10;• Register a Guide: Streamline guide registration for visitor experiences.&#10;&#10;Effortlessly manage park operations and enhance visitor experiences&#10;with these essential features.&#10;Remember, you are the first interaction with our business,&#10;so don't forget to smile!">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

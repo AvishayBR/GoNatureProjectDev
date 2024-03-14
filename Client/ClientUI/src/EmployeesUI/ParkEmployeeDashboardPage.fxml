@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.ParkEmployeeDashboardPageController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.ParkEmployeeDashboardPageController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text fx:id="txtHeader" layoutX="311.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Employee Dashboard" textAlignment="CENTER">
+            <Text layoutX="298.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Employee Dashboard" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <Text fx:id="txtDescription" layoutX="21.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Employee Dashboard!&#10;&#10;As an employee, you have to give the best possible service&#10;to every customer.&#10;This dashboard allows you to do the following:&#10;• Easily create detailed bills for park visitors, covering entry fees and more.&#10;• Quickly check if there is an available spot in the park, for a casual visit.&#10;&#10;Effortlessly manage park operations and enhance visitor experiences&#10;with these essential features.&#10;Remember, you are the first interaction with our business,&#10;so don't forget to smile!">
+            <MFXButton fx:id="btnGenerateBill" layoutX="210.0" layoutY="520.0" mnemonicParsing="false" onAction="#OnClickGenerateBillButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Generate Bill" />
+            <Text layoutX="135.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate Park Visitor's Bill">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="529.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check For an Available Spot">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <MFXButton fx:id="btnAvailableSpot" layoutX="610.0" layoutY="520.0" mnemonicParsing="false" onAction="#OnClickAvailableSpotButton" prefHeight="50.0" prefWidth="100.0" styleClass="actButtonGreen" text="Available Spot" />
+            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Employee Dashboard!&#10;&#10;As an employee, you have to give the best possible service&#10;to every customer.&#10;This dashboard allows you to do the following:&#10;• Easily create detailed bills for park visitors, covering entry fees and more.&#10;• Quickly check if there is an available spot in the park, for a casual visit.&#10;&#10;Effortlessly manage park operations and enhance visitor experiences&#10;with these essential features.&#10;Remember, you are the first interaction with our business,&#10;so don't forget to smile!">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
-            <Separator layoutX="14.0" layoutY="66.0" prefHeight="14.0" prefWidth="929.0" />
          </children>
       </Pane>
    </children>

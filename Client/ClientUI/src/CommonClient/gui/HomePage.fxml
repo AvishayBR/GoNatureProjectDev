@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.Image?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommonClient.controllers.HomePageController">
+   <children>
+      <Pane prefHeight="768.0" prefWidth="1280.0">
+         <children>
+            <MFXButton fx:id="signInBtn" layoutX="1129.0" layoutY="43.0" onAction="#onButtonClicked" prefHeight="41.0" prefWidth="119.0" styleClass="signInBtn" text="Sign In" />
+            <Text layoutX="165.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GoNature Parks and Recreation Inc.">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Text>
+            <Text layoutX="462.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a visit to one of our parks today!">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="327.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Explore nature, bask in the beauty of our parks and revitalize yourself">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <MFXButton fx:id="bookBtn" layoutX="185.0" layoutY="531.0" onAction="#onBookButtonClicked" prefHeight="53.0" prefWidth="954.0" style="-fx-font-size: 24px;" styleClass="actButtonGreen" text="Get Started" />
+            <ImageView fx:id="centerImg" fitHeight="238.0" fitWidth="455.0" layoutX="412.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" styleClass="parkImages">
+                <image>
+                    <Image url="/assets/centerPark.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="img1" fitHeight="218.0" fitWidth="427.0" layoutX="14.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" styleClass="parkImages">
+                <image>
+                    <Image url="/assets/leftPark.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="img2" fitHeight="218.0" fitWidth="427.0" layoutX="839.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" styleClass="parkImages">
+                <image>
+                    <Image url="/assets/rightPark.png" />
+                </image>
+            </ImageView>
+            <Text layoutX="150.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Haifa High-Park">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="566.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel-Aviv Central Park">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="979.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Be'er Sheva City-Park">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="95.0" fitWidth="112.0" layoutX="47.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="/assets/GoNatureLogo.png" />
+                </image>
+            </ImageView>
+            <Text layoutX="185.0" layoutY="650.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already booked a visit?" wrappingWidth="243.48095703125">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text styleClass="linkText" onMouseClicked="#handleExistingOrder" layoutX="435.0" layoutY="650.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handle Your Order">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

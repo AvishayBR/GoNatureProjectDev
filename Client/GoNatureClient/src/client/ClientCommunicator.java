@@ -7,6 +7,7 @@ package client;
 import CommonClient.ocsf.AbstractClient;
 import CommonClient.ChatCommunicatorIF;
 import Entities.Message;
+import Entities.OpCodes;
 
 import java.io.IOException;
 
@@ -56,8 +57,13 @@ public class ClientCommunicator extends AbstractClient {
      */
     public void handleMessageFromServer(Object msg) {
         System.out.println("--> handleMessageFromServer");
-        ClientCommunicator.msg = (Message) msg;
-        clientUI.respond(msg);
+        if (msg instanceof Message){
+            ClientCommunicator.msg = (Message) msg;
+            clientUI.respond(msg);
+        }
+        if (msg instanceof String){
+            clientUI.respond(msg);
+        }
         awaitResponse = false;
     }
 
@@ -92,7 +98,8 @@ public class ClientCommunicator extends AbstractClient {
      */
     public void quit() {
         try {
-            sendToServer("quit");
+            Object msg = new Message(OpCodes.OP_QUIT, null, null);
+            sendToServer(msg);
             closeConnection();
         } catch (IOException e) {
         }

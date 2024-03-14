@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 public class GroupOrder extends Order implements Serializable {
     private Integer groupSize;
-    private VisitorGroupGuide visitorGroupeGuide;
+    private VisitorGroupGuide visitorGroupGuide;
 
     /**
      * Constructs a new GroupOrder object with the specified attributes.
@@ -23,12 +23,12 @@ public class GroupOrder extends Order implements Serializable {
      * @param orderID            The unique ID of the order.
      * @param orderType          The type of the order.
      * @param groupSize          The size of the group associated with the order.
-     * @param visitorGroupeGuide The visitor or group guide associated with the order.
+     * @param visitorGroupGuide The visitor or group guide associated with the order.
      */
-    public GroupOrder(String vistorID, String parkID, Timestamp date, String clientEmailAddress, String phoneNumber, OrderStatus status, Timestamp enteredTime, Timestamp exitedTime, String orderID, OrderType orderType, Integer groupSize, VisitorGroupGuide visitorGroupeGuide) {
-        super(vistorID, parkID, date, clientEmailAddress, phoneNumber, status, enteredTime, exitedTime, orderID, orderType, 1);
+    public GroupOrder(String visitorID, String parkID, Timestamp date, String clientEmailAddress, String phoneNumber, OrderStatus status, Timestamp enteredTime, Timestamp exitedTime, String orderID, OrderType orderType, Integer groupSize, VisitorGroupGuide visitorGroupGuide) {
+        super(visitorID, parkID, date, clientEmailAddress, phoneNumber, status, enteredTime, exitedTime, orderID, orderType, 1);
         this.groupSize = groupSize;
-        this.visitorGroupeGuide = visitorGroupeGuide;
+        this.visitorGroupGuide = visitorGroupGuide;
     }
 
     /**
@@ -36,17 +36,17 @@ public class GroupOrder extends Order implements Serializable {
      *
      * @return The visitor or group guide associated with the order.
      */
-    public VisitorGroupGuide getVisitorGroupeGuide() {
-        return visitorGroupeGuide;
+    public VisitorGroupGuide getVisitorGroupGuide() {
+        return visitorGroupGuide;
     }
 
     /**
      * Sets the visitor or group guide associated with the order.
      *
-     * @param visitorGroupeGuide The visitor or group guide to be set.
+     * @param visitorGroupGuide The visitor or group guide to be set.
      */
-    public void setVisitorGroupeGuide(VisitorGroupGuide visitorGroupeGuide) {
-        this.visitorGroupeGuide = visitorGroupeGuide;
+    public void setVisitorGroupGuide(VisitorGroupGuide visitorGroupGuide) {
+        this.visitorGroupGuide = visitorGroupGuide;
     }
 
     /**

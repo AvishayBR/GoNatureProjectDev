@@ -1,84 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisitorsControllers.GroupGuideOrderVisitationPageController">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="VisitorsControllers.GroupGuideOrderVisitationPageController">
     <children>
         <Pane fx:id="pane" prefHeight="768.0" prefWidth="950.0">
             <children>
-                <Text fx:id="Header" layoutX="336.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Visitation " textAlignment="CENTER" wrappingWidth="277.7367401123047">
+                <Text fx:id="Header" layoutX="336.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Order Visitation " textAlignment="CENTER" wrappingWidth="277.7367401123047">
                     <font>
-                        <Font name="System Bold" size="35.0" />
+                        <Font name="System Bold" size="35.0"/>
                     </font>
                 </Text>
-                <Separator fx:id="sepOrder" layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
-                <MFXLegacyComboBox fx:id="parkCmbBox" layoutX="424.0" layoutY="243.0" prefHeight="30.0" prefWidth="200.0" />
-                <MFXLegacyComboBox fx:id="timeOfVisitCmbBox" layoutX="423.0" layoutY="347.0" prefHeight="24.0" prefWidth="200.0" />
-                <Label fx:id="phoneLbl" layoutX="323.0" layoutY="443.0" prefHeight="40.0" prefWidth="130.0" text="Phone:">
+                <Separator fx:id="sepOrder" layoutY="68.0" prefHeight="14.0" prefWidth="950.0"/>
+                <MFXLegacyComboBox fx:id="parkCmbBox" layoutX="424.0" layoutY="243.0" prefHeight="30.0"
+                                   prefWidth="200.0"/>
+                <MFXLegacyComboBox fx:id="timeOfVisitCmbBox" layoutX="423.0" layoutY="347.0" prefHeight="24.0"
+                                   prefWidth="200.0"/>
+                <MFXButton fx:id="btnCreateOrder" buttonType="RAISED" layoutX="425.0" layoutY="625.0"
+                           onAction="#OnClickCreateOrderButton" prefHeight="50.0" prefWidth="100.0"
+                           text="Create Order"/>
+                <MFXTextField fx:id="txtFirstName" layoutX="423.0" layoutY="133.0" prefHeight="25.0" prefWidth="200.0"/>
+                <MFXTextField fx:id="txtLastName" layoutX="423.0" layoutY="188.0" prefHeight="49.0" prefWidth="200.0"/>
+                <DatePicker fx:id="datePicker" layoutX="423.0" layoutY="289.0" prefHeight="38.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </DatePicker>
+                <MFXLegacyComboBox fx:id="numOfVisitorsCmbBox" layoutX="482.0" layoutY="395.0" prefHeight="23.0"
+                                   prefWidth="137.0"/>
+                <MFXTextField fx:id="txtPhone" layoutX="424.0" layoutY="437.0" prefHeight="49.0" prefWidth="200.0"/>
+                <MFXTextField fx:id="txtEmail" layoutX="424.0" layoutY="493.0" prefHeight="49.0" prefWidth="200.0"/>
+                <Text layoutX="323.0" layoutY="163.0" text="First Name:">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
-                </Label>
-                <Label fx:id="emailLbl" layoutX="323.0" layoutY="498.0" prefHeight="40.0" prefWidth="130.0" text="Email: ">
+                </Text>
+                <Text layoutX="324.0" layoutY="218.0" text="Last Name:">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
-                </Label>
-                <MFXButton fx:id="btnCreateOrder" buttonType="RAISED" layoutX="627.0" layoutY="559.0" onAction="#OnClickCreateOrderButton" prefHeight="40.0" prefWidth="98.0" rippleColor="#adff49" text="Create Order" />
-            <MFXTextField fx:id="txtFirstName" layoutX="423.0" layoutY="133.0" prefHeight="25.0" prefWidth="200.0" />
-            <MFXTextField fx:id="txtLastName" layoutX="423.0" layoutY="188.0" prefHeight="49.0" prefWidth="200.0" />
-            <MFXDatePicker fx:id="datePicker" floatMode="BORDER" layoutX="423.0" layoutY="289.0" prefHeight="38.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MFXDatePicker>
-            <MFXTextField fx:id="txtNumOfVisitors" alignment="CENTER" layoutX="475.0" layoutY="383.0" prefHeight="30.0" prefWidth="152.0" text="1" />
-            <MFXTextField fx:id="txtPhone" layoutX="424.0" layoutY="437.0" prefHeight="49.0" prefWidth="200.0" />
-            <MFXTextField fx:id="txtEmail" layoutX="424.0" layoutY="493.0" prefHeight="49.0" prefWidth="200.0" />
-            <Text layoutX="323.0" layoutY="163.0" text="First Name:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="324.0" layoutY="218.0" text="Last Name:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="323.0" layoutY="264.0" text="Choose Park:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="324.0" layoutY="314.0" text="Date:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="324.0" layoutY="365.0" text="Time of visit:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="324.0" layoutY="413.0" text="Number of visitors:" wrappingWidth="137.2734375">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
+                </Text>
+                <Text layoutX="323.0" layoutY="264.0" text="Choose Park:">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="324.0" layoutY="314.0" text="Date:">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="324.0" layoutY="365.0" text="Time of visit:">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="324.0" layoutY="413.0" text="Number of visitors:" wrappingWidth="137.2734375">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="324.0" layoutY="467.0" text="Phone:">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
+                <Text layoutX="327.0" layoutY="523.0" text="Email:">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Text>
             </children>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
+            <cursor>
+                <Cursor fx:constant="DEFAULT"/>
+            </cursor>
         </Pane>
     </children>
 </StackPane>

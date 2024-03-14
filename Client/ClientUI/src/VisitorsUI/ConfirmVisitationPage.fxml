@@ -1,96 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text fx:id="txtHeader" layoutX="308.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Visitation" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Text>
-      <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
-      <Text layoutX="251.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View your order details and confirm your arrival or decline.&#10;Your confirmation helps us prepare for your visit.&#10;Thank you for choosing us!">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="367.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Name:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="294.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Visitors:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="371.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="417.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="423.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="421.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Label fx:id="lblParkName" layoutX="480.0" layoutY="235.0" text="lblParkName">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblNumOfVisitors" layoutX="480.0" layoutY="275.0" text="lblNumOfVisitors">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTelephone" layoutX="480.0" layoutY="315.0" text="lblTelephone">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblEmail" layoutX="480.0" layoutY="355.0" text="lblEmail">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblDate" layoutX="480.0" layoutY="395.0" text="lblDate">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTime" layoutX="480.0" layoutY="435.0" text="lblTime">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Text layoutX="334.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Label fx:id="lblOrderNumber" layoutX="480.0" layoutY="193.0" text="lblOrderNumber">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <MFXButton fx:id="btnDeclineVisitation" layoutX="294.0" layoutY="490.0" onAction="#OnClickDeclineVisitationButton" prefHeight="51.0" prefWidth="117.0" rippleColor="#ff4646" text="Decline" />
-      <MFXButton fx:id="btnConfirmVisitation" buttonType="RAISED" layoutX="567.0" layoutY="490.0" onAction="#OnClickConfirmVisitationButton" prefHeight="51.0" prefWidth="117.0" rippleColor="#adff49" text="Confirm" />
-   </children>
+<?import javafx.scene.text.*?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+      prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="VisitorsControllers.ConfirmVisitationPageController">
+    <children>
+        <Text fx:id="txtHeader" layoutX="308.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Confirm Visitation" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="36.0"/>
+            </font>
+        </Text>
+        <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0"/>
+        <Text fx:id="txtDescription" layoutX="251.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="View your order details and confirm your arrival or decline.&#10;Your confirmation helps us prepare for your visit.&#10;Thank you for choosing us!">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Text>
+        <Text layoutX="367.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park Name:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Text layoutX="294.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Visitors:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Text layoutX="371.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Text layoutX="417.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Text layoutX="423.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Text layoutX="421.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Label fx:id="lblParkName" layoutX="480.0" layoutY="235.0" text="lblParkName">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblNumOfVisitors" layoutX="480.0" layoutY="275.0" text="lblNumOfVisitors">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblTelephone" layoutX="480.0" layoutY="315.0" text="lblTelephone">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblEmail" layoutX="480.0" layoutY="355.0" text="lblEmail">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblDate" layoutX="480.0" layoutY="395.0" text="lblDate">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblTime" layoutX="480.0" layoutY="435.0" text="lblTime">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Text layoutX="334.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number:">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Text>
+        <Label fx:id="lblOrderNumber" layoutX="480.0" layoutY="193.0" text="lblOrderNumber">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <MFXButton fx:id="btnDeclineVisitation" layoutX="294.0" layoutY="490.0"
+                   onAction="#OnClickDeclineVisitationButton" prefHeight="51.0" prefWidth="117.0" rippleColor="#ff4646"
+                   text="Decline"/>
+        <MFXButton fx:id="btnConfirmVisitation" buttonType="RAISED" layoutX="567.0" layoutY="490.0"
+                   onAction="#OnClickConfirmVisitationButton" prefHeight="51.0" prefWidth="117.0" rippleColor="#adff49"
+                   text="Confirm"/>
+    </children>
 </Pane>

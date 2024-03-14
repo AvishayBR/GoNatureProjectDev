@@ -18,7 +18,7 @@
     -fx-z-index: 1000; /* Z-index */
 }
 
-.menu-item {
+.menu-item, .menu-item-big {
     -fx-background-color: transparent;
     -fx-border-color: #39a569; /* White-ish border color */
     -fx-border-width: 1px; /* Adjust border width as needed */
@@ -29,9 +29,22 @@
     -fx-alignment: center;
 }
 
-.menu-item:hover {
+.menu-item-big {
+    -fx-pref-width: 200px !important;
+}
+
+.menu-item:hover, .menu-item-big:hover {
     -fx-background-color: #3e4462; /* White background color on hover */
     -fx-text-fill: #FCFCFC; /* Text color on hover */
+}
+
+.back-button {
+    -fx-background-image: url('/assets/backButton.png'); /* Back button image */
+    -fx-background-size: 20px; /* Adjust size as needed */
+    -fx-background-repeat: no-repeat; /* No repeat */
+    -fx-background-position: center; /* Center background */
+    -fx-padding: 10px; /* Padding */
+    -fx-cursor: hand; /* Cursor style */
 }
 
 .username {
@@ -79,10 +92,45 @@
 
 .actButtonGreen {
     -fx-background-color: #39a569;
-    -fx-text-fill: white;
+    -fx-text-fill: #FCFCFC;
 }
 
 .actButtonGreen:hover {
     -fx-border-color: #4CAF50; /* Light green border color */
     -fx-background-color: #2C8052FF;
+}
+
+.signInBtn {
+    -fx-border-color: #39a569;
+    -fx-text-fill: #11142D;
+    -fx-font-size: 16px;
+}
+
+.signInBtn:hover {
+    -fx-border-color: #53c157; /* Light green border color */
+}
+
+.parkImages {
+    -fx-background-color: #263238; /* Dark background color */
+    -fx-background-size: cover; /* Cover background */
+    -fx-background-position: center; /* Center background */
+    -fx-background-repeat: no-repeat; /* No repeat */
+}
+
+#shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0, 0, 2);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-opacity: 0.8;
+}
+
+.linkText {
+    -fx-underline: true;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.linkText:hover {
+    -fx-text-fill: #11142D;
+    -fx-font-size: 21px;
 }

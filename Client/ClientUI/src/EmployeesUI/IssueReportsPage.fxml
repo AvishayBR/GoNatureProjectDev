@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EmployeesControllers.IssueReportsController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="950.0">
          <children>
-            <Text layoutX="563.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue Department Reports" textAlignment="CENTER">
+            <Text layoutX="269.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue Department Reports" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="1224.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Separator layoutX="257.0" layoutY="74.0" prefHeight="12.0" prefWidth="1016.0" />
-            <Button layoutX="1185.0" layoutY="720.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="Logout" />
-            <Button layoutX="463.0" layoutY="258.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="149.0" text="Cancellation Reports" />
-            <Button layoutX="765.0" layoutY="258.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="149.0" text="Visitations Reports" />
-            <Text layoutX="575.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View This Month's Reports" wrappingWidth="232.2265625">
+            <Separator layoutY="68.0" prefHeight="14.0" prefWidth="950.0" />
+            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can access vital reports:&#10;&#10;• Cancellation Reports: Review last month's cancellation details.&#10;Understanding cancellations helps optimize operations and improve customer satisfaction.&#10;&#10;• Visitation Reports: Explore visitation data, including visitor numbers and demographics from the previous month.&#10;Utilize these insights to make informed decisions and enhance visitor experiences.&#10;&#10;Efficiently monitor department performance and drive continuous improvement with these essential reports." wrappingWidth="855.159912109375">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="22.0" />
                </font>
             </Text>
-            <VBox prefHeight="768.0" prefWidth="250.0" />
+            <MFXButton fx:id="btnCancellationReports" layoutX="275.0" layoutY="475.0" onAction="#OnClickCancellationReportsButton" prefHeight="50.0" prefWidth="100.0" text="Cancellation&#10;Reports" textAlignment="CENTER" textOverrun="CLIP" />
+            <MFXButton fx:id="btnVisitationsReports" layoutX="625.0" layoutY="475.0" onAction="#OnClickVisitationsReportsButton" prefHeight="50.0" prefWidth="100.0" text="Visitations&#10;Reports" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

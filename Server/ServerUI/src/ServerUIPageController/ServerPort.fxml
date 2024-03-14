@@ -1,45 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<Pane prefHeight="693.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="ServerUIPageController.ServerPortFrameController">
+
+<?import javafx.scene.image.Image?>
+<Pane prefHeight="693.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ServerUIPageController.ServerPortFrameController">
     <children>
-        <Button fx:id="btnStart" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onAction="#Done"
-                prefHeight="52.0" prefWidth="307.0" text="Start GoNatureServer"/>
-        <TextField fx:id="portxt" layoutX="121.0" layoutY="135.0" prefHeight="25.0" prefWidth="218.0"/>
-        <Button fx:id="btnExit" layoutX="726.0" layoutY="639.0" mnemonicParsing="false" onAction="#getExitBtn"
-                prefHeight="33.0" prefWidth="80.0" text="Exit"/>
-        <Label layoutX="48.0" layoutY="139.0" text="Server Port"/>
-        <TextArea fx:id="loggerTextArea" layoutX="463.0" layoutY="417.0" prefHeight="200.0" prefWidth="342.0"/>
-        <Label fx:id="lblLogger" alignment="CENTER" layoutX="588.0" layoutY="380.0" prefHeight="33.0" prefWidth="95.0"
-               text="Server Logs">
+        <MFXButton fx:id="btnStart" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onAction="#Done" prefHeight="52.0" prefWidth="307.0" text="Start GoNatureServer" />
+        <TextField fx:id="portxt" layoutX="121.0" layoutY="135.0" prefHeight="25.0" prefWidth="218.0" />
+        <Button fx:id="btnExit" layoutX="726.0" layoutY="639.0" mnemonicParsing="false" onAction="#getExitBtn" prefHeight="33.0" prefWidth="80.0" text="Exit" />
+        <Label layoutX="48.0" layoutY="139.0" text="Server Port" />
+        <TextArea fx:id="loggerTextArea" layoutX="463.0" layoutY="417.0" prefHeight="200.0" prefWidth="342.0" />
+        <Label fx:id="lblLogger" alignment="CENTER" layoutX="588.0" layoutY="380.0" prefHeight="33.0" prefWidth="95.0" text="Server Logs">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Label fx:id="lblSQLUser" layoutX="38.0" layoutY="230.0" text="SQL Username"/>
-        <Label fx:id="lblSQLPassword" layoutX="40.0" layoutY="275.0" text="SQL Password"/>
-        <Label fx:id="lblSQLURL" layoutX="37.0" layoutY="186.0" text="SQL IP Address"/>
-        <ComboBox fx:id="URLComboBox" layoutX="121.0" layoutY="182.0" prefHeight="25.0" prefWidth="218.0"/>
-        <TextField fx:id="TextfieldUserName" layoutX="121.0" layoutY="226.0" prefHeight="25.0" prefWidth="218.0"/>
-        <PasswordField fx:id="TextFieldPassword" layoutX="121.0" layoutY="271.0" prefHeight="25.0" prefWidth="218.0"/>
-        <Button fx:id="BtnStop" disable="true" layoutX="34.0" layoutY="399.0" mnemonicParsing="false"
-                onAction="#stopServer" prefHeight="52.0" prefWidth="307.0" text="Stop GoNatureServer"/>
+        <Label fx:id="lblSQLUser" layoutX="38.0" layoutY="230.0" text="SQL Username" />
+        <Label fx:id="lblSQLPassword" layoutX="40.0" layoutY="275.0" text="SQL Password" />
+        <Label fx:id="lblSQLURL" layoutX="37.0" layoutY="186.0" text="SQL IP Address" />
+        <ComboBox fx:id="URLComboBox" layoutX="121.0" layoutY="182.0" prefHeight="25.0" prefWidth="218.0" />
+        <TextField fx:id="TextfieldUserName" layoutX="121.0" layoutY="226.0" prefHeight="25.0" prefWidth="218.0" />
+        <PasswordField fx:id="TextFieldPassword" layoutX="121.0" layoutY="271.0" prefHeight="25.0" prefWidth="218.0" />
+        <MFXButton fx:id="BtnStop" disable="true" layoutX="34.0" layoutY="399.0" mnemonicParsing="false" onAction="#stopServer" prefHeight="52.0" prefWidth="307.0" text="Stop GoNatureServer" />
         <TableView fx:id="tableClients" layoutX="464.0" layoutY="135.0" prefHeight="226.0" prefWidth="342.0">
             <columns>
-                <TableColumn fx:id="colIP" prefWidth="125.0" text="Client IP"/>
-                <TableColumn fx:id="colName" prefWidth="123.0" text="Client Name"/>
-                <TableColumn fx:id="colStatus" prefWidth="93.0" text="Status"/>
+                <TableColumn fx:id="colIP" prefWidth="125.0" text="Client IP" />
+                <TableColumn fx:id="colName" prefWidth="123.0" text="Client Name" />
+                <TableColumn fx:id="colStatus" prefWidth="93.0" text="Status" />
             </columns>
         </TableView>
-        <Label alignment="CENTER" layoutX="299.0" layoutY="15.0" prefHeight="41.0" prefWidth="267.0"
-               text="GoNature Server" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="299.0" layoutY="15.0" prefHeight="41.0" prefWidth="267.0" text="GoNature Server" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="24.0"/>
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
         <ImageView fitHeight="71.0" fitWidth="80.0" layoutX="264.0" pickOnBounds="true" preserveRatio="true">
@@ -49,14 +52,14 @@
         </ImageView>
         <Label alignment="CENTER" layoutX="566.0" layoutY="97.0" text="Connected Clients" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="42.0" layoutY="93.0" prefHeight="33.0" prefWidth="291.0"
-               text="Server Connection &amp; Configurations" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="42.0" layoutY="93.0" prefHeight="33.0" prefWidth="291.0" text="Server Connection &amp; Configurations" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
+
     </children>
 </Pane>

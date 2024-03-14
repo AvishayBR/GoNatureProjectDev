@@ -1,10 +1,10 @@
 package DataBase;
 
+import Entities.*;
 import ServerUIPageController.ServerPortFrameController;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Manages the database connection for the application.
@@ -15,6 +15,7 @@ import java.sql.SQLException;
 public class DBConnection {
     private Connection conn;
     private static DBConnection dbConnection;
+    private String schemaName;
 
     private final ServerPortFrameController serverController;
 
@@ -79,8 +80,8 @@ public class DBConnection {
      */
     private boolean setConnection(String url, String user, String password) {
         try {
-            String schemaName = "gonature";
-            this.conn = DriverManager.getConnection("jdbc:mysql://" + url + ":3306/" + schemaName + "?serverTimezone=Asia/Jerusalem&useSSL=false&allowPublicKeyRetrieval=true", user, password);
+            this.schemaName = "gonature";
+            this.conn = DriverManager.getConnection("jdbc:mysql://" + url + ":3306/" + this.schemaName + "?serverTimezone=Asia/Jerusalem&useSSL=false&allowPublicKeyRetrieval=true", user, password);
             this.serverController.addtolog("SQL connection succeed");
             return true;
         } catch (SQLException ex) {
@@ -105,22 +106,237 @@ public class DBConnection {
         this.conn = null;
         dbConnection = null;
     }
-}
-/*
-    public ArrayList<Order> getOrders() {
+
+    public User login(String username, String password) {
         try {
-            String tableName = "prototype.orders";
-            ResultSet results = dbController.selectRecords(tableName, "");
-            this.serverController.addtolog("Select from " + tableName + " succeeded");
+            String tableName = this.schemaName + ".users";
+            String whereClause = "username='" + username + "' AND password='" + password + "'";
+            ResultSet userCredentials = dbController.selectRecords(tableName, whereClause);
+
+            if (userCredentials.next()) {
+                int userRole = userCredentials.getInt("role");
+                String userTypeTableName = userRole < 3 ? ".visitors" : userRole == 4 ? ".departmentmanagers" : ".parkemployees";
+                ResultSet userGoNatureData = dbController.selectRecords(this.schemaName + userTypeTableName, "username='" + username + "'");
+
+                if (userGoNatureData.next()) {
+                    switch (userRole) {
+                        case 1:
+                            return new SingleVisitor(
+                                    userCredentials.getString("username"),
+                                    "",
+                                    userGoNatureData.getString("emailAddress"),
+                                    userGoNatureData.getString("VisitorID"),
+                                    userGoNatureData.getString("firstName"),
+                                    userGoNatureData.getString("lastName")
+                            );
+                        case 2:
+                            return new VisitorGroupGuide(
+                                    userCredentials.getString("username"),
+                                    "",
+                                    userGoNatureData.getString("emailAddress"),
+                                    userGoNatureData.getString("VisitorID"),
+                                    userGoNatureData.getString("firstName"),
+                                    userGoNatureData.getString("lastName")
+                            );
+                        case 3:
+                            ResultSet parkData = dbController.selectRecords(this.schemaName + ".parks", "ParkID=" + userGoNatureData.getString("ParkID"));
+                            ResultSet managerData = dbController.selectRecords(this.schemaName + ".parkemployees", "ParkID=" + userGoNatureData.getString("ParkID") + " AND isParkManager=true");
+                            if (parkData.next() && managerData.next()) {
+                                return new ParkEmployee(
+                                        userCredentials.getString("username"),
+                                        "",
+                                        userGoNatureData.getString("EmailAddress"),
+                                        new Park(
+                                                parkData.getString("ParkID"),
+                                                parkData.getString("ParkName"),
+                                                parkData.getInt("Capacity"),
+                                                parkData.getInt("GapVisitorsCapacity"),
+                                                parkData.getTimestamp("DefaultVisitationTime"),
+                                                parkData.getInt("departmentID"),
+                                                new ParkManager(
+                                                        managerData.getString("username"),
+                                                        "",
+                                                        managerData.getString("EmailAddress"),
+                                                        parkData.getString("ParkID")
+                                                )
+                                        )
+                                );
+                            }
+                            break;
+                        case 4:
+                            return new ParkDepartmentManager(
+                                    userCredentials.getString("username"),
+                                    "",
+                                    userGoNatureData.getString("emailAddress"),
+                                    null,
+                                    null,
+                                    userGoNatureData.getInt("departmentID")
+                            );
+                        case 5:
+                            return new ParkManager(
+                                    userCredentials.getString("username"),
+                                    "",
+                                    userGoNatureData.getString("EmailAddress"),
+                                    userGoNatureData.getString("ParkID")
+                            );
+                        case 6:
+                            ResultSet parkDataSupport = dbController.selectRecords(this.schemaName + ".parks", "ParkID=" + userGoNatureData.getString("ParkID"));
+                            ResultSet supportManagerData = dbController.selectRecords(this.schemaName + ".parkemployees", "ParkID=" + userGoNatureData.getString("ParkID") + " AND isParkManager=true");
+                            if (parkDataSupport.next() && supportManagerData.next()) {
+                                return new ParkSupportRepresentative(
+                                        userCredentials.getString("username"),
+                                        "",
+                                        userGoNatureData.getString("emailAddress"),
+                                        new Park(
+                                                parkDataSupport.getString("ParkID"),
+                                                parkDataSupport.getString("ParkName"),
+                                                parkDataSupport.getInt("Capacity"),
+                                                parkDataSupport.getInt("GapVisitorsCapacity"),
+                                                parkDataSupport.getTimestamp("DefaultVisitationTime"),
+                                                parkDataSupport.getInt("departmentID"),
+                                                new ParkManager(
+                                                        supportManagerData.getString("username"),
+                                                        "",
+                                                        supportManagerData.getString("EmailAddress"),
+                                                        parkDataSupport.getString("ParkID")
+                                                )
+                                        )
+                                );
+                            }
+                        default:
+                            break;
+                    }
+                }
+            }
+            return null;
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+
+    public Order getUserOrderByUserID(String userID, String orderID) {
+        try {
+            String tableName = this.schemaName + ".visitors";
+            String whereClause = "VisitorID='" + userID + "'";
+            ResultSet userGoNatureData = dbController.selectRecords(tableName, whereClause);
+            if (userGoNatureData.next()) {
+                ResultSet orderData = dbController.selectRecords(this.schemaName + ".orders", "VisitorID='" + userID + "' AND OrderID=' " + orderID + "'");
+                if (orderData.next()) {
+                    return new Order(
+                            orderData.getString("VisitorID"),
+                            orderData.getString("ParkID"),
+                            orderData.getTimestamp("VisitationDate"),
+                            orderData.getString("ClientEmailAddress"),
+                            orderData.getString("PhoneNumber"),
+                            OrderStatus.values()[orderData.getInt("orderStatus") - 1],
+                            orderData.getTimestamp("EnteredTime"),
+                            orderData.getTimestamp("ExitedTime"),
+                            orderData.getString("OrderID"),
+                            OrderType.values()[orderData.getInt("OrderType") - 1],
+                            orderData.getInt("NumOfVisitors")
+                    );
+                }
+            }
+            return null;
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+
+    public Order addOrder(Order order) {
+        try {
+            String tableName = this.schemaName + ".orders";
+            String columns = "VisitorID, ParkID, VisitationDate, ClientEmailAddress, PhoneNumber, orderStatus, EnteredTime, ExitedTime, OrderType, NumOfVisitors";
+            if (!dbController.insertRecord(tableName, columns, "'" + order.getVisitorID() + "'",
+                    "'" + order.getParkID() + "'",
+                    "'" + order.getVisitationDate().toString().substring(0, order.getVisitationDate().toString().length() - 2) + "'",
+                    "'" + order.getClientEmailAddress() + "'",
+                    "'" + order.getPhoneNumber() + "'",
+                    String.valueOf(order.getOrderStatus().ordinal() + 1),
+                    "'" + order.getEnteredTime().toString().substring(0, order.getVisitationDate().toString().length() - 2) + "'",
+                    "'" + order.getExitedTime().toString().substring(0, order.getVisitationDate().toString().length() - 2) + "'",
+                    String.valueOf(order.getOrderType().ordinal() + 1),
+                    String.valueOf(order.getNumOfVisitors()))) {
+                this.serverController.addtolog("Insert into " + tableName + " failed. Insert order:" + order);
+                return null;
+            }
+            this.serverController.addtolog("Insert into " + tableName + " succeeded. Insert order:" + order);
+
+            // Get the order from the DB (extract newly assigned order ID)
+            ResultSet results = dbController.selectRecords(tableName, "VisitorID='" + order.getVisitorID() + "' AND ParkID='" + order.getParkID() + "' AND VisitationDate='" + order.getVisitationDate() + "'");
+            if (results.next()) {
+                return new Order(
+                        results.getString("VisitorID"),
+                        results.getString("ParkID"),
+                        results.getTimestamp("VisitationDate"),
+                        results.getString("ClientEmailAddress"),
+                        results.getString("PhoneNumber"),
+                        OrderStatus.values()[results.getInt("orderStatus") - 1],
+                        results.getTimestamp("EnteredTime"),
+                        results.getTimestamp("ExitedTime"),
+                        results.getString("OrderID"),
+                        OrderType.values()[results.getInt("OrderType") - 1],
+                        results.getInt("NumOfVisitors")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+
+
+    public Order getOrderById(String OrderID) {
+        try {
+            String tableName = this.schemaName + ".orders";
+            String whereClause = "OrderID=" + OrderID;
+            ResultSet results = dbController.selectRecords(tableName, whereClause);
+            if (results.next()) {
+                return new Order(
+                        results.getString("VisitorID"),
+                        results.getString("ParkID"),
+                        results.getTimestamp("VisitationDate"),
+                        results.getString("ClientEmailAddress"),
+                        results.getString("PhoneNumber"),
+                        OrderStatus.values()[results.getInt("orderStatus") - 1],
+                        results.getTimestamp("EnteredTime"),
+                        results.getTimestamp("ExitedTime"),
+                        results.getString("OrderID"),
+                        OrderType.values()[results.getInt("OrderType") - 1],
+                        results.getInt("NumOfVisitors")
+                );
+            }
+
+            return new Order("", "", null, "", "", null, null, null, "", null, 0);
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<Order> getUserOrders(String visitorID) {
+        try {
+            String tableName = this.schemaName + ".orders";
+            String whereClause = "VisitorID=" + visitorID;
+            ResultSet results = dbController.selectRecords(tableName, whereClause);
+
             ArrayList<Order> orders = new ArrayList<>();
             while (results.next()) {
                 orders.add(new Order(
-                        // results.getString("ParkName"),
-                        // results.getString("OrderNo"),
-                        // results.getTimestamp("VisitationTime"),
-                        // results.getInt("NumberOfVisitors"),
-                        // results.getString("TelephoneNumber"),
-                        // results.getString("EmailAddress")
+                        results.getString("VisitorID"),
+                        results.getString("ParkID"),
+                        results.getTimestamp("VisitationDate"),
+                        results.getString("ClientEmailAddress"),
+                        results.getString("PhoneNumber"),
+                        OrderStatus.values()[results.getInt("orderStatus") - 1],
+                        results.getTimestamp("EnteredTime"),
+                        results.getTimestamp("ExitedTime"),
+                        results.getString("OrderID"),
+                        OrderType.values()[results.getInt("OrderType") - 1],
+                        results.getInt("NumOfVisitors")
                 ));
             }
 
@@ -131,50 +347,98 @@ public class DBConnection {
         }
     }
 
-    public Order getOrderById(String orderId) {
+    public boolean updateOrderStatus(String orderID, OrderStatus status) {
         try {
-            String tableName = "prototype.orders";
-            String whereClause = "OrderNo=" + orderId;
-            ResultSet results = dbController.selectRecords(tableName, whereClause);
-            this.serverController.addtolog("Select from " + tableName + " WHERE" + " OrderNo=" + orderId + " succeeded");
-
-            if (results.next()) {
-                Order order = new Order(
-                        results.getString("ParkName"),
-                        results.getString("OrderNo"),
-                        results.getTimestamp("VisitationTime"),
-                        results.getInt("NumberOfVisitors"),
-                        results.getString("TelephoneNumber"),
-                        results.getString("EmailAddress")
-                );
-                return order;
-            }
-
-            return new Order("", "", null, 0, "", "");
-        } catch (SQLException e) {
-            this.serverController.addtolog(e.getMessage());
-            return null;
-        }
-    }
-
-    public Boolean updateOrderById(Order updatedOrder) {
-        try {
-            String tableName = "prototype.orders";
-            String setClause = "ParkName = '" + updatedOrder.getParkName() +
-                    "', VisitationTime = '" + updatedOrder.getVisitationTime() +
-                    "', NumberOfVisitors = " + updatedOrder.getNumberOfVisitors() +
-                    ", TelephoneNumber = '" + updatedOrder.getTelephoneNumber() +
-                    "', EmailAddress = '" + updatedOrder.getEmailAddress() + "'";
-            String whereClause = "OrderNo = '" + updatedOrder.getOrderNo() + "'";
+            String tableName = this.schemaName + ".orders";
+            String setClause = "OrderStatus=" + status;
+            String whereClause = "OrderID=" + orderID;
             if (!dbController.updateRecord(tableName, setClause, whereClause)) {
-                this.serverController.addtolog("Update in " + tableName + " failed. Update order:" + updatedOrder);
+                this.serverController.addtolog("Update in " + tableName + " failed. Update order status:" + orderID);
                 return false;
             }
-            this.serverController.addtolog("Update in " + tableName + " succeeded. Update order:" + updatedOrder);
             return true;
         } catch (SQLException e) {
             this.serverController.addtolog(e.getMessage());
             return false;
         }
     }
-}*/
+
+    public boolean updateOrderEmailAddress(String orderID, String emailAddress) {
+        try {
+            String tableName = this.schemaName + ".orders";
+            String setClause = "ClientEmailAddress=" + emailAddress;
+            String whereClause = "OrderID=" + orderID;
+            if (!dbController.updateRecord(tableName, setClause, whereClause)) {
+                this.serverController.addtolog("Update in " + tableName + " failed. Update order status:" + orderID);
+                return false;
+            }
+            return true;
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateOrderStatusAsCancelled(String orderID) {
+        return updateOrderStatus(orderID, OrderStatus.STATUS_CANCELLED);
+    }
+
+    public boolean checkOrderExists(String visitorID, String parkID, Timestamp visitationDate) {
+        try {
+            String tableName = this.schemaName + ".orders";
+            String whereClause = "VisitorID=" + visitorID + " AND ParkID=" + parkID + " AND VisitationDate=" + visitationDate;
+            ResultSet results = dbController.selectRecords(tableName, whereClause);
+            return results.next();
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return false;
+        }
+    }
+
+    public String getParkNameByID(String parkID) {
+        try {
+            String tableName = this.schemaName + ".parks";
+            String whereClause = "ParkID=" + parkID;
+            ResultSet results = dbController.selectRecords(tableName, whereClause);
+            if (results.next()) {
+                return results.getString("ParkName");
+            }
+            return "";
+        } catch (Exception e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+
+    public Park getParkDetails(String parkID) {
+        try {
+            String tableName = this.schemaName + ".parks";
+            String whereClause = "ParkID=" + parkID;
+            ResultSet results = dbController.selectRecords(tableName, whereClause);
+            if (results.next()) {
+                String pManagerId = results.getString("ParkManagerID");
+                ResultSet managerResults = dbController.selectRecords(this.schemaName + ".parkemployees", "id=" + pManagerId);
+                if (managerResults.next()) {
+                    return new Park(
+                            results.getString("ParkID"),
+                            results.getString("ParkName"),
+                            results.getInt("Capacity"),
+                            results.getInt("GapVisitorsCapacity"),
+                            results.getTimestamp("DefaultVisitationTime"),
+                            results.getInt("Department"),
+                            new ParkManager(
+                                    managerResults.getString("username"),
+                                    "",
+                                    managerResults.getString("EmailAddress"),
+                                    results.getString("ParkID")
+                            )
+                    );
+                }
+            }
+            return new Park("", "", 0, 0, null, 0, null);
+        } catch (SQLException e) {
+            this.serverController.addtolog(e.getMessage());
+            return null;
+        }
+    }
+}
